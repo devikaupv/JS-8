@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS-Task 8</title>
+    <style>
+      body {
+        display: grid;
+        place-content: center;
+      }
+      .train-container {
+        position: relative; 
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+      }
+      .train {
+        margin-bottom: 20px; 
+      }
+      .playback-controls {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="train-container">
+      <div class="train">
+        <img src="https://js.cx/clipart/train.gif" alt="train" />
+      </div>
+      <h1>Click the following buttons to handle animation</h1>
+    </div>
+    <div class="playback-controls">
+      <button onclick="startAnimation()">Start</button>
+      <button onclick="stopAnimation()">Stop</button>
+    </div>
+
+    <script>
+      let trainImage = document.querySelector(".train img");
+      let intervalId;
+
+      function startAnimation() {
+        intervalId = setInterval(moveTrain, 200);
+      }
+
+      function stopAnimation() {
+        clearInterval(intervalId);
+      }
+
+      function moveTrain() {
+        let marginLeft = parseInt(trainImage.style.marginLeft) || 0;
+        marginLeft += 10;
+        trainImage.style.marginLeft = marginLeft + "px";
+      }
+    </script>
+  </body>
+</html>
